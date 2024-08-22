@@ -2,12 +2,14 @@
      import './ContentRating.css';
 
      class ContentRating extends Component {
-       constructor() {
+       constructor()
+     {
          super();
          this.state =
           {
              likes: 0,
              dislikes: 0,
+             totalratings:0,
 
            handleLike:() =>
             {
@@ -16,18 +18,28 @@
                     (prevState) =>
                         (
                             {
-                                likes: prevState.likes + 1
+                                likes: prevState.likes + 1,
+                                totalratings: prevState.totalratings + 1
                             }
                         )
                 );
             },
-           handleDislike:() => {
-             this.setState((prevState) => ({
-                 dislikes: prevState.dislikes + 1
-               }));
-           }
-           };
-       }
+
+            handleDislike:() =>
+            {
+                this.setState
+                (
+                    (prevState) =>
+                        (
+                            {
+                                dislikes: prevState.dislikes + 1,
+                                totalratings: prevState.totalratings + 1
+                            }
+                        )
+                );
+            },
+       }    
+    }
        render() {
          return (
           <>
@@ -46,6 +58,8 @@
                 <button className="dislike-button" onClick={this.state.handleDislike}>
                     Dislike ({this.state.dislikes})
                  </button>
+
+                 <p>Total Rating : {this.state.totalratings}</p>
             </div>
 
           </div>
